@@ -9,7 +9,7 @@
 #import "DiaryEntry.h"
 
 
-@implementation THDiaryEntry
+@implementation DiaryEntry
 
 @dynamic date;
 @dynamic body;

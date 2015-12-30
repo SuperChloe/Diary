@@ -1,4 +1,4 @@
-//
+    //
 //  NewEntryViewController.m
 //  Diary
 //
@@ -7,8 +7,13 @@
 //
 
 #import "NewEntryViewController.h"
+#import "DiaryEntry.h"
+#import "CoreDataStack.h"
 
 @interface NewEntryViewController ()
+
+@property (weak, nonatomic) IBOutlet UITextField *textField;
+
 
 @end
 
@@ -26,6 +31,11 @@
 
 - (void)dismissSelf {
     [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)insertDiaryEntry {
+    CoreDataStack *coreDataStack = [CoreDataStack defaultStack];
+    DiaryEntry *entry = [NSEntityDescription insertNewObjectForEntityForName:@"DiaryEntry" inManagedObjectContext:coreDataStack.managedObjectContext];
 }
 
 - (IBAction)doneWasPressed:(id)sender {
