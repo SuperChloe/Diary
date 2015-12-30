@@ -9,13 +9,13 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-NS_ENUM(int16_t, THDiaryEntryMood) {
-    THDiaryEntryMoodGood = 0,
-    THDiaryEntryMoodAverage = 1,
-    THDiaryEntryMoodBad = 2
+extern NS_ENUM(int16_t, DiaryEntryMood) {
+    DiaryEntryMoodGood = 0,
+    DiaryEntryMoodAverage = 1,
+    DiaryEntryMoodBad = 2
 };
 
-@interface THDiaryEntry : NSManagedObject
+@interface DiaryEntry : NSManagedObject
 
 @property (nonatomic) NSTimeInterval date;
 @property (nonatomic, retain) NSString * body;

@@ -36,9 +36,13 @@
 - (void)insertDiaryEntry {
     CoreDataStack *coreDataStack = [CoreDataStack defaultStack];
     DiaryEntry *entry = [NSEntityDescription insertNewObjectForEntityForName:@"DiaryEntry" inManagedObjectContext:coreDataStack.managedObjectContext];
+    entry.body = self.textField.text;
+    entry.date = [[NSDate date] timeIntervalSince1970];
+    [coreDataStack saveContext];
 }
 
 - (IBAction)doneWasPressed:(id)sender {
+    [self insertDiaryEntry];
     [self dismissSelf];
 }
 
