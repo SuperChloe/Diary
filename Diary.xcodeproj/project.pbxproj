@@ -19,6 +19,7 @@
 		894C59BC1C348824009A0275 /* EntryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 894C59BB1C348824009A0275 /* EntryViewController.m */; settings = {ASSET_TAGS = (); }; };
 		894C59BF1C348AD9009A0275 /* DiaryEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 894C59BE1C348AD9009A0275 /* DiaryEntry.m */; settings = {ASSET_TAGS = (); }; };
 		894C59C21C34A846009A0275 /* EntryListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 894C59C11C34A846009A0275 /* EntryListViewController.m */; settings = {ASSET_TAGS = (); }; };
+		894C59C51C35D844009A0275 /* NavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 894C59C41C35D844009A0275 /* NavigationController.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,8 @@
 		894C59BE1C348AD9009A0275 /* DiaryEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiaryEntry.m; sourceTree = "<group>"; };
 		894C59C01C34A846009A0275 /* EntryListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntryListViewController.h; sourceTree = "<group>"; };
 		894C59C11C34A846009A0275 /* EntryListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntryListViewController.m; sourceTree = "<group>"; };
+		894C59C31C35D844009A0275 /* NavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationController.h; sourceTree = "<group>"; };
+		894C59C41C35D844009A0275 /* NavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,14 +115,16 @@
 		894C59781C30820D009A0275 /* Diary */ = {
 			isa = PBXGroup;
 			children = (
-				894C597C1C30820D009A0275 /* AppDelegate.h */,
-				894C597D1C30820D009A0275 /* AppDelegate.m */,
 				894C59AF1C31D7C8009A0275 /* CoreDataStack.h */,
 				894C59B01C31D7C8009A0275 /* CoreDataStack.m */,
-				894C59C01C34A846009A0275 /* EntryListViewController.h */,
-				894C59C11C34A846009A0275 /* EntryListViewController.m */,
+				894C597C1C30820D009A0275 /* AppDelegate.h */,
+				894C597D1C30820D009A0275 /* AppDelegate.m */,
 				894C59BD1C348AD9009A0275 /* DiaryEntry.h */,
 				894C59BE1C348AD9009A0275 /* DiaryEntry.m */,
+				894C59C31C35D844009A0275 /* NavigationController.h */,
+				894C59C41C35D844009A0275 /* NavigationController.m */,
+				894C59C01C34A846009A0275 /* EntryListViewController.h */,
+				894C59C11C34A846009A0275 /* EntryListViewController.m */,
 				894C59B81C347A48009A0275 /* MainStoryboard.storyboard */,
 				894C59BA1C348824009A0275 /* EntryViewController.h */,
 				894C59BB1C348824009A0275 /* EntryViewController.m */,
@@ -293,6 +298,7 @@
 				894C597B1C30820D009A0275 /* main.m in Sources */,
 				894C59BC1C348824009A0275 /* EntryViewController.m in Sources */,
 				894C59871C30820D009A0275 /* Diary.xcdatamodeld in Sources */,
+				894C59C51C35D844009A0275 /* NavigationController.m in Sources */,
 				894C59C21C34A846009A0275 /* EntryListViewController.m in Sources */,
 				894C59B11C31D7C8009A0275 /* CoreDataStack.m in Sources */,
 			);

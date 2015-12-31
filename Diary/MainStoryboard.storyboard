@@ -84,7 +84,7 @@
         <!--Navigation Controller-->
         <scene sceneID="FQa-hi-p5G">
             <objects>
-                <navigationController id="Fw6-Uw-89x" sceneMemberID="viewController">
+                <navigationController id="Fw6-Uw-89x" customClass="NavigationController" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ddQ-kl-J6b">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -100,7 +100,7 @@
         <!--Navigation Controller-->
         <scene sceneID="Eh2-nn-frx">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="7Mn-qe-P0o" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="7Mn-qe-P0o" customClass="NavigationController" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="fZh-Po-jkm">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
