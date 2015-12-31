@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
     </dependencies>
     <scenes>
-        <!--Title-->
+        <!--Diary Entries-->
         <scene sceneID="Fbp-Uy-hwn">
             <objects>
                 <tableViewController id="jP3-pl-dFH" customClass="EntryListViewController" sceneMemberID="viewController">
@@ -31,7 +31,7 @@
                         </connections>
                     </tableView>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Title" id="ZJq-TU-jQj">
+                    <navigationItem key="navigationItem" title="Diary Entries" id="ZJq-TU-jQj">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="WRr-gZ-4Al">
                             <connections>
                                 <segue destination="7Mn-qe-P0o" kind="modal" id="BZk-if-H0F"/>
