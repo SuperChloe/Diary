@@ -9,6 +9,7 @@
 #import "EntryListViewController.h"
 #import "CoreDataStack.h"
 #import "DiaryEntry.h"
+#import "EntryViewController.h"
 
 @interface EntryListViewController () <NSFetchedResultsControllerDelegate>
 
@@ -33,6 +34,17 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"edit"]) {
+        UITableViewCell *cell = sender;
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+        UINavigationController *navigationController = segue.destinationViewController;
+        EntryViewController *entryViewController = (EntryViewController *)navigationController.topViewController;
+        entryViewController.entry = [self.fetchedResultsController objectAtIndexPath:indexPath];
+        
+    }
 }
 
 #pragma mark - Table view data source
