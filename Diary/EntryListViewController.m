@@ -10,6 +10,7 @@
 #import "CoreDataStack.h"
 #import "DiaryEntry.h"
 #import "EntryViewController.h"
+#import "EntryCell.h"
 
 @interface EntryListViewController () <NSFetchedResultsControllerDelegate>
 
@@ -70,6 +71,11 @@
     
     
     return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    DiaryEntry *entry = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    return [EntryCell heightForEntry:entry];
 }
 
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
