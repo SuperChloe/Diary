@@ -60,6 +60,11 @@
     return cell;
 }
 
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
+    return [sectionInfo name];
+}
+
 - (NSFetchRequest *)entryListFetchRequest {
     NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"DiaryEntry"];
     
@@ -76,7 +81,7 @@
     CoreDataStack *coreDataStack = [CoreDataStack defaultStack];
     NSFetchRequest *fetchRequest = [self entryListFetchRequest];
     
-    _fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:coreDataStack.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
+    _fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:coreDataStack.managedObjectContext sectionNameKeyPath:@"sectionName" cacheName:nil];
     _fetchedResultsController.delegate = self;
     
     return _fetchedResultsController;
