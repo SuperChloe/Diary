@@ -24,7 +24,7 @@
 
 + (CGFloat)heightForEntry:(DiaryEntry *)entry {
     const CGFloat topMargin = 35.0f;
-    const CGFloat bottomMargin = 39.0f;
+    const CGFloat bottomMargin = 80.0f;
     const CGFloat minHeight = 85.0f;
     
     UIFont *font = [UIFont systemFontOfSize:[UIFont systemFontSize]];
@@ -44,6 +44,20 @@
     
     NSDate *date = [NSDate dateWithTimeIntervalSince1970:entry.date];
     self.dateLabel.text = [dateFormatter stringFromDate:date];
+    
+    if (entry.imageData) {
+        self.mainImageView.image = [UIImage imageWithData:entry.imageData];
+    } else {
+        self.mainImageView.image = [UIImage imageNamed:@"icn_noImage"];
+    }
+    
+    if (entry.mood == DiaryEntryMoodGood) {
+        self.moodImageView.image = [UIImage imageNamed:@"icn_happy"];
+    } else if (entry.mood == DiaryEntryMoodAverage) {
+        self.moodImageView.image = [UIImage imageNamed:@"icn_average"];
+    } else if (entry.mood == DiaryEntryMoodBad) {
+        self.moodImageView.image = [UIImage imageNamed:@"icn_bad"];
+    }
     
 }
 
