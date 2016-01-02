@@ -9,8 +9,12 @@
 #import "EntryViewController.h"
 #import "DiaryEntry.h"
 #import "CoreDataStack.h"
+#import <CoreLocation/CoreLocation.h>
 
-@interface EntryViewController () <UIActionSheetDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
+@interface EntryViewController () <UIActionSheetDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, CLLocationManagerDelegate>
+
+@property (strong, nonatomic) CLLocationManager *locationManager;
+@property (strong, nonatomic) NSString *location;
 
 
 @property (weak, nonatomic) IBOutlet UITextView *textView;
@@ -45,6 +49,7 @@
     } else {
         self.pickedMood = DiaryEntryMoodGood;
         date = [NSDate date];
+        [self loadLocation];
     }
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
@@ -70,6 +75,30 @@
     [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
+- (void)loadLocation {
+    self.locationManager = [[CLLocationManager alloc] init];
+    self.locationManager.delegate = self;
+    self.locationManager.desiredAccuracy = 1000;
+    // Check for iOS 8. Without this guard the code will crash with "unknown selector" on iOS 7.
+    // http://nevan.net/2014/09/core-location-manager-changes-in-ios-8/
+    if ([self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
+        [self.locationManager requestWhenInUseAuthorization];
+    }
+    
+    [self.locationManager startUpdatingLocation];
+}
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
+    [self.locationManager stopUpdatingLocation];
+    
+    CLLocation *location = [locations firstObject];
+    CLGeocoder *geoCoder = [[CLGeocoder alloc] init];
+    [geoCoder reverseGeocodeLocation:location completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error) {
+        CLPlacemark *placemark = [placemarks firstObject];
+        self.location = placemark.name;
+    }];
+}
+
 - (void)insertDiaryEntry {
     CoreDataStack *coreDataStack = [CoreDataStack defaultStack];
     DiaryEntry *entry = [NSEntityDescription insertNewObjectForEntityForName:@"DiaryEntry" inManagedObjectContext:coreDataStack.managedObjectContext];
@@ -77,6 +106,7 @@
     entry.date = [[NSDate date] timeIntervalSince1970];
     entry.mood = self.pickedMood;
     entry.imageData = UIImageJPEGRepresentation(self.pickedImage, 0.75);
+    entry.location = self.location;
     [coreDataStack saveContext];
 }
 
