@@ -42,11 +42,11 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="n2e-ko-XQ1">
-                                            <rect key="frame" x="8" y="0.0" width="71" height="71"/>
+                                            <rect key="frame" x="8" y="8" width="71" height="71"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="cqM-I5-YcV">
-                                            <rect key="frame" x="59" y="52" width="25" height="25"/>
+                                            <rect key="frame" x="59" y="60" width="25" height="25"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                     </subviews>

@@ -48,7 +48,7 @@
     if (entry.imageData) {
         self.mainImageView.image = [UIImage imageWithData:entry.imageData];
     } else {
-        self.mainImageView.image = [UIImage imageNamed:@"icn_noImage"];
+        self.mainImageView.image = [UIImage imageNamed:@"icn_noimage"];
     }
     
     if (entry.mood == DiaryEntryMoodGood) {
