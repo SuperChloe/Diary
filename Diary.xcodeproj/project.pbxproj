@@ -21,6 +21,7 @@
 		894C59C21C34A846009A0275 /* EntryListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 894C59C11C34A846009A0275 /* EntryListViewController.m */; settings = {ASSET_TAGS = (); }; };
 		894C59C51C35D844009A0275 /* NavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 894C59C41C35D844009A0275 /* NavigationController.m */; settings = {ASSET_TAGS = (); }; };
 		894C59C81C35DC39009A0275 /* EntryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 894C59C71C35DC39009A0275 /* EntryCell.m */; settings = {ASSET_TAGS = (); }; };
+		8966BA7F1C3780E900746CD4 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8966BA7E1C3780E900746CD4 /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,7 @@
 		894C59C41C35D844009A0275 /* NavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationController.m; sourceTree = "<group>"; };
 		894C59C61C35DC39009A0275 /* EntryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntryCell.h; sourceTree = "<group>"; };
 		894C59C71C35DC39009A0275 /* EntryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntryCell.m; sourceTree = "<group>"; };
+		8966BA7E1C3780E900746CD4 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +77,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8966BA7F1C3780E900746CD4 /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,6 +101,7 @@
 		894C596D1C30820D009A0275 = {
 			isa = PBXGroup;
 			children = (
+				8966BA7E1C3780E900746CD4 /* QuartzCore.framework */,
 				894C59781C30820D009A0275 /* Diary */,
 				894C59951C30820D009A0275 /* DiaryTests */,
 				894C59A01C30820D009A0275 /* DiaryUITests */,
@@ -522,6 +526,7 @@
 				894C59A81C30820D009A0275 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		894C59A91C30820D009A0275 /* Build configuration list for PBXNativeTarget "DiaryTests" */ = {
 			isa = XCConfigurationList;
@@ -530,6 +535,7 @@
 				894C59AB1C30820D009A0275 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		894C59AC1C30820D009A0275 /* Build configuration list for PBXNativeTarget "DiaryUITests" */ = {
 			isa = XCConfigurationList;
@@ -538,6 +544,7 @@
 				894C59AE1C30820D009A0275 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
