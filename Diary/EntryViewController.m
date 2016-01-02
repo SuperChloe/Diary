@@ -41,6 +41,7 @@
         self.textView.text = self.entry.body;
         self.pickedMood = self.entry.mood;
         date = [NSDate dateWithTimeIntervalSince1970:self.entry.date];
+        [self setPickedImage:[UIImage imageWithData:self.entry.imageData]];
     } else {
         self.pickedMood = DiaryEntryMoodGood;
         date = [NSDate date];
