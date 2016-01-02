@@ -12,7 +12,8 @@
 
 @interface EntryViewController ()
 
-@property (weak, nonatomic) IBOutlet UITextField *textField;
+
+@property (weak, nonatomic) IBOutlet UITextView *textView;
 @property (assign, nonatomic) enum DiaryEntryMood pickedMood;
 
 @property (weak, nonatomic) IBOutlet UIButton *badButton;
@@ -36,7 +37,7 @@
     NSDate *date;
     
     if (self.entry != nil) {
-        self.textField.text = self.entry.body;
+        self.textView.text = self.entry.body;
         self.pickedMood = self.entry.mood;
         date = [NSDate dateWithTimeIntervalSince1970:self.entry.date];
     } else {
@@ -48,7 +49,7 @@
     [dateFormatter setDateFormat:@"EEEE MMMM d, yyyy"];
     self.dateLabel.text = [dateFormatter stringFromDate:date];
     
-    self.textField.inputAccessoryView = self.accessoryView;
+    self.textView.inputAccessoryView = self.accessoryView;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -63,14 +64,14 @@
 - (void)insertDiaryEntry {
     CoreDataStack *coreDataStack = [CoreDataStack defaultStack];
     DiaryEntry *entry = [NSEntityDescription insertNewObjectForEntityForName:@"DiaryEntry" inManagedObjectContext:coreDataStack.managedObjectContext];
-    entry.body = self.textField.text;
+    entry.body = self.textView.text;
     entry.date = [[NSDate date] timeIntervalSince1970];
     entry.mood = self.pickedMood;
     [coreDataStack saveContext];
 }
 
 - (void)updateDiaryEntry {
-    self.entry.body = self.textField.text;
+    self.entry.body = self.textView.text;
     self.entry.mood = self.pickedMood;
     
     CoreDataStack *coreDataStack = [CoreDataStack defaultStack];
