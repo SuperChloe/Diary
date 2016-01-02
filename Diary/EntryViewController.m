@@ -10,19 +10,20 @@
 #import "DiaryEntry.h"
 #import "CoreDataStack.h"
 
-@interface EntryViewController ()
+@interface EntryViewController () <UIActionSheetDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
 
 @property (weak, nonatomic) IBOutlet UITextView *textView;
-@property (assign, nonatomic) enum DiaryEntryMood pickedMood;
+@property (strong, nonatomic) UIImage *pickedImage;
 
+@property (assign, nonatomic) enum DiaryEntryMood pickedMood;
 @property (weak, nonatomic) IBOutlet UIButton *badButton;
 @property (weak, nonatomic) IBOutlet UIButton *averageButton;
 @property (weak, nonatomic) IBOutlet UIButton *goodButton;
-
 @property (strong, nonatomic) IBOutlet UIView *accessoryView;
-
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+@property (weak, nonatomic) IBOutlet UIButton *imageButton;
+
 
 
 
@@ -52,6 +53,12 @@
     self.textView.inputAccessoryView = self.accessoryView;
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [self.textView becomeFirstResponder];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -67,15 +74,66 @@
     entry.body = self.textView.text;
     entry.date = [[NSDate date] timeIntervalSince1970];
     entry.mood = self.pickedMood;
+    entry.imageData = UIImageJPEGRepresentation(self.pickedImage, 0.75);
     [coreDataStack saveContext];
 }
 
 - (void)updateDiaryEntry {
     self.entry.body = self.textView.text;
     self.entry.mood = self.pickedMood;
+    self.entry.imageData = UIImageJPEGRepresentation(self.pickedImage, 0.75);
     
     CoreDataStack *coreDataStack = [CoreDataStack defaultStack];
     [coreDataStack saveContext];
+}
+
+- (void)promptForSource {
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Image Source"
+                                                                   message:@"This is an alert."
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *camera = [UIAlertAction actionWithTitle:@"Camera" style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * action) {
+                                                              [self promptForCamera];
+                                                          }];
+    UIAlertAction *photoRoll = [UIAlertAction actionWithTitle:@"Photo Roll" style:UIAlertActionStyleDefault
+                                                   handler:^(UIAlertAction * action) {
+                                                       [self promptForPhotoRoll];
+                                                   }];
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault
+                                                   handler:^(UIAlertAction * action) {
+                                                       [self.presentedViewController dismissViewControllerAnimated:YES completion:nil];
+                                                   }];
+    
+    [alert addAction:camera];
+    [alert addAction:photoRoll];
+    [alert addAction:cancel];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+- (void)promptForCamera {
+    UIImagePickerController *controller = [[UIImagePickerController alloc] init];
+    controller.sourceType = UIImagePickerControllerSourceTypeCamera;
+    controller.delegate = self;
+    [self presentViewController:controller animated:YES completion:nil];
+}
+
+- (void)promptForPhotoRoll {
+    UIImagePickerController *controller = [[UIImagePickerController alloc] init];
+    controller.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    controller.delegate = self;
+    [self presentViewController:controller animated:YES completion:nil];
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
+    UIImage *image = info[UIImagePickerControllerOriginalImage];
+    self.pickedImage = image;
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)setPickedMood:(enum DiaryEntryMood)pickedMood {
@@ -97,6 +155,16 @@
         case DiaryEntryMoodBad:
             self.badButton.alpha = 1.0f;
             break;
+    }
+}
+
+- (void)setPickedImage:(UIImage *)pickedImage {
+    _pickedImage = pickedImage;
+    
+    if (pickedImage == nil) {
+        [self.imageButton setImage:[UIImage imageNamed:@"icn_noimage"] forState:UIControlStateNormal];
+    } else {
+    [self.imageButton setImage:pickedImage forState:UIControlStateNormal];
     }
 }
 
@@ -123,6 +191,15 @@
 - (IBAction)goodWasPressed:(id)sender {
     self.pickedMood = DiaryEntryMoodGood;
 }
+
+- (IBAction)imageButtonWasPressed:(id)sender {
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        [self promptForSource];
+    } else {
+        [self promptForPhotoRoll];
+    }
+}
+
 
 
 @end

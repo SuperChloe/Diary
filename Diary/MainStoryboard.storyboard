@@ -89,18 +89,26 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Kgd-SE-tGw">
-                                <rect key="frame" x="20" y="95" width="280" height="21"/>
+                                <rect key="frame" x="83" y="95" width="217" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" id="hh5-9L-hH4">
-                                <rect key="frame" x="20" y="133" width="280" height="128"/>
+                                <rect key="frame" x="83" y="133" width="217" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="qgn-wE-kc7">
+                                <rect key="frame" x="17" y="85" width="47" height="47"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="icn_noimage"/>
+                                <connections>
+                                    <action selector="imageButtonWasPressed:" destination="CzL-qk-SHe" eventType="touchUpInside" id="ikr-FE-Fi0"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -122,6 +130,7 @@
                         <outlet property="badButton" destination="fcx-Q0-r1n" id="2e1-xg-918"/>
                         <outlet property="dateLabel" destination="Kgd-SE-tGw" id="zwh-vH-zGP"/>
                         <outlet property="goodButton" destination="X8f-he-3n6" id="AAb-YI-fsy"/>
+                        <outlet property="imageButton" destination="qgn-wE-kc7" id="zqn-s9-OEz"/>
                         <outlet property="textView" destination="hh5-9L-hH4" id="gDZ-s2-isk"/>
                     </connections>
                 </viewController>
@@ -211,6 +220,7 @@
         <image name="icn_average_lrg" width="15" height="15"/>
         <image name="icn_bad_lrg" width="15" height="15"/>
         <image name="icn_good_lrg" width="15" height="15"/>
+        <image name="icn_noimage" width="47" height="47"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="JLw-mB-4YP"/>
