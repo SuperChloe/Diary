@@ -13,6 +13,14 @@
 @interface EntryViewController ()
 
 @property (weak, nonatomic) IBOutlet UITextField *textField;
+@property (assign, nonatomic) enum DiaryEntryMood *pickedMood;
+
+@property (weak, nonatomic) IBOutlet UIButton *badButton;
+@property (weak, nonatomic) IBOutlet UIButton *averageButton;
+@property (weak, nonatomic) IBOutlet UIButton *goodButton;
+
+@property (strong, nonatomic) IBOutlet UIView *accessoryView;
+
 
 
 @end
@@ -25,6 +33,8 @@
     if (self.entry != nil) {
         self.textField.text = self.entry.body;
     }
+    
+    self.textField.inputAccessoryView = self.accessoryView;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -65,6 +75,15 @@
     [self dismissSelf];
 }
 
+- (IBAction)badWasPressed:(id)sender {
+    self.pickedMood = DiaryEntryMoodBad;
+}
+- (IBAction)averageWasPressed:(id)sender {
+    self.pickedMood = DiaryEntryMoodAverage;
+}
+- (IBAction)goodWasPressed:(id)sender {
+    self.pickedMood = DiaryEntryMoodGood;
+}
 
 
 @end

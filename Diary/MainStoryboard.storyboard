@@ -110,10 +110,57 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="accessoryView" destination="9IJ-As-LEP" id="v58-3C-O0h"/>
+                        <outlet property="averageButton" destination="gYp-DN-xy7" id="4mY-wa-N1k"/>
+                        <outlet property="badButton" destination="fcx-Q0-r1n" id="2e1-xg-918"/>
+                        <outlet property="goodButton" destination="X8f-he-3n6" id="AAb-YI-fsy"/>
                         <outlet property="textField" destination="RDy-jT-vnG" id="bld-rd-6SP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UU5-5n-6ip" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="9IJ-As-LEP">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="fcx-Q0-r1n">
+                            <rect key="frame" x="0.0" y="0.0" width="107" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" red="0.8784313725490196" green="0.37647058823529411" blue="0.37647058823529411" alpha="1" colorSpace="calibratedRGB"/>
+                            <inset key="imageEdgeInsets" minX="-8" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <state key="normal" title="Bad" image="icn_bad_lrg">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="badWasPressed:" destination="CzL-qk-SHe" eventType="touchUpInside" id="gTq-Zg-Wf2"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="X8f-he-3n6">
+                            <rect key="frame" x="214" y="0.0" width="107" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" red="0.49411764705882355" green="0.60392156862745094" blue="0.36862745098039218" alpha="1" colorSpace="calibratedRGB"/>
+                            <inset key="imageEdgeInsets" minX="-8" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <state key="normal" title="Good" image="icn_good_lrg">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="goodWasPressed:" destination="CzL-qk-SHe" eventType="touchUpInside" id="wHD-1q-ZjN"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="gYp-DN-xy7">
+                            <rect key="frame" x="107" y="0.0" width="107" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" red="0.396078431372549" green="0.396078431372549" blue="0.396078431372549" alpha="1" colorSpace="calibratedRGB"/>
+                            <inset key="imageEdgeInsets" minX="-8" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <state key="normal" title="Average" image="icn_average_lrg">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="averageWasPressed:" destination="CzL-qk-SHe" eventType="touchUpInside" id="RrX-5a-eaf"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
             </objects>
             <point key="canvasLocation" x="1342" y="-170"/>
         </scene>
@@ -152,6 +199,11 @@
             <point key="canvasLocation" x="810" y="-170"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="icn_average_lrg" width="15" height="15"/>
+        <image name="icn_bad_lrg" width="15" height="15"/>
+        <image name="icn_good_lrg" width="15" height="15"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="JLw-mB-4YP"/>
     </inferredMetricsTieBreakers>
